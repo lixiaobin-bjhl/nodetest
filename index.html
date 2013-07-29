@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8">
+		<title>xiaobin chat</title>
+		<script src="http://127.0.0.1:8080/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="js/sea-debug.js" data-main='index.js'></script>-->
+		<script type="text/javascript" src="jquery.js"></script>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+			window.user = "<%= userinfo.name %>";
+		</script>
+		<header id="top_header">	
+			<h1><%=userinfo.name%></h1>
+		</header>
+		<div id="outerWrap">
+			<section id="chats">
+				<article>
+				<form id="form">
+					<h3 class="tp"><span>与<a href="javascript:;">xiaobin.li</a>聊天</span><span class="tool"><a href="javascript:;" class="close">关闭</a></span></h3>
+					<dl>
+						<dd>
+						this is my test
+						<footer>2012-08-07 05:06</footer>
+						</dd>
+						<dd>
+						hehe
+						<footer>2012-08-07 05:08</footer>
+						</dd>
+					</dl>
+					<textarea id="content" placeholder="输入内容" required="true" autofocus="true"></textarea>
+					<p class="btnp clearfix"><button class="send">发送</button></p>
+				</form>
+				</article>
+				</section>
+				<script type="text/javascript">
+				var openChannel = function() {
+					socket = io.connect('http://127.0.0.1:8080');
+					socket.on('connect', function(){
+						console.log('socket connected!');
+					});
+					socket.on('init',function(){
+						console.log('init');
+					})
+					socket.on('message', function(e){
+						console.log(e);
+					});
+				}
+
+				openChannel();
+					$("#form").bind('submit',function(){
+						var text = $("#content").val(); 
+						socket.emit('message',{"data":text});
+						return false;
+					})
+				</script>
+			<!--
+			<section id="users">
+			<dt>用户列表</dt>
+			<dl>
+				<dd name ='xiaobin' id='1'><span class="offline" title="不在线"></span><img src="img/user.jpg" />xiaobin<a href="javascript:;" class="link_video" title="视频聊天">视频</a></dd>
+				<dd name ='jicheng' id='2'><span class="online" title="不在线"></span><img src="img/user1.jpg" />jicheng<a href="javascript:;" class="link_video" title="视频聊天">视频</a></dd>
+				<dd name='zhaoyang' id='3'><span class="offline" title="不在线"></span><img src="img/user.jpg" />zhaoyang<a href="javascript:;" class="link_video" title="视频聊天">视频</a></dd>
+				<dd name=xiaoqiang id='4'><span class="online" title="不在线"></span><img src="img/user1.jpg" />xiaoqiang<a href="javascript:;" class="link_video" title="视频聊天">视频</a></dd>
+			</dl>
+			</section>
+			-->
+	</div>
+		</body>
+</html>

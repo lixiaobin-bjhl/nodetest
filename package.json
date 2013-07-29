@@ -1,0 +1,44 @@
+{
+  "name": "chat",
+  "description": "实验平台",
+  "keywords": [
+    "web chat"
+  ],
+  "version": "0.0.1",
+  "homepage": "http://github.com/deemstone/Dproxy",
+  "author": "Deemstone Li <deemstone@gmail.com> (http://blog.cooer.net)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deemstone/Dproxy"
+  },
+  "bugs": {
+    "email": "deemstone@gmail.com",
+    "url": "http://github.com/deemstone/Dproxy/issues"
+  },
+  "directories": {
+    "doc": "./doc",
+    "lib": "./lib",
+    "bin": "./bin"
+  },
+  "main": "./app.js",
+  "bin": "./app.js",
+  "dependencies": {
+    "connect": "2.8.4",
+    "router": "0.6.2",
+    "connect-redis": "1.4.5",
+    "ejs": "0.8.4",
+    "socket.io": "0.9.16",
+    "express" : "3.3.4"
+  },
+  "bundleDependencies": [
+    "fastcgi"
+  ],
+  "devDependencies": {},
+  "engines": {
+    "node": "0.8.18",
+    "npm": "1.2.2"
+  },
+  "scripts": {
+    "test": "node ./test/run.js"
+  }
+}
